@@ -2,7 +2,7 @@
 
 An interactive resume website built with a focus on clean UI, performance, and user experience, showcasing my professional background as a Senior .NET Backend Engineer.
 
-🔗 Live Demo: https://ricardozitelli.github.io
+🔗 Live Demo: https://ricardozitelli.github.io/Resume/
 
 ---
 
