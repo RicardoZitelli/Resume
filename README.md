@@ -30,7 +30,7 @@ Features:
 
 ## 🏗️ Architecture
 
-resume.html — Main application
+index.html — Main application
 progress-bar.js — Reusable Web Component
 
 ---
