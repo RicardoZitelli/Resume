@@ -154,6 +154,14 @@ class ProgressBar extends HTMLElement {
           margin-top: 0;
           opacity: 0;
           white-space: nowrap;
+          font-size: clamp(0.75rem, 2vw, 1rem);
+        }
+
+        @media (max-width: 600px) {
+          .step-text {
+            font-size: clamp(0.6rem, 3.5vw, 0.8rem);
+            letter-spacing: 0;
+          }
         }
 
         .step:last-child .icon-wrapper {

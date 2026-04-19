@@ -8,6 +8,11 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html, body {
+      overflow-x: clip;
+      max-width: 100%;
+    }
+
     body {
       font-family: 'Roboto Condensed', sans-serif;
       background: radial-gradient(ellipse at center, #051B23, #030f14);
@@ -24,6 +29,10 @@
       backdrop-filter: blur(6px);
       padding: 1.8rem 10%;
       border-bottom: 1px solid rgba(251, 176, 52, 0.15);
+    }
+
+    @media (max-width: 600px) {
+      .sticky-bar { padding: 1rem 4%; }
     }
 
     .bar-row {
