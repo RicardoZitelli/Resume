@@ -28,16 +28,16 @@
 
     .bar-row {
       display: flex;
-      align-items: center;
-      gap: 1.5rem;
+      flex-direction: column;
     }
 
-    progress-bar { flex: 1; }
+    progress-bar { width: 100%; }
 
     .lang-switcher {
       display: flex;
       gap: 0.4rem;
-      flex-shrink: 0;
+      justify-content: flex-end;
+      padding-top: 0.4rem;
     }
 
     .lang-btn {

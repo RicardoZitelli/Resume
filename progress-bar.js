@@ -156,6 +156,10 @@ class ProgressBar extends HTMLElement {
           white-space: nowrap;
         }
 
+        .step:last-child .icon-wrapper {
+          margin-top: 0.25em;
+        }
+
         .step:last-child .step-text {
           margin-left: 0;
           transform: translateX(-50%);
