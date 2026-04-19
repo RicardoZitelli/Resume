@@ -107,12 +107,24 @@
     p { line-height: 1.75; color: #b0bec5; font-size: 1.05rem; max-width: 720px; }
 
     /* ── Tecnologias ── */
-    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; max-width: 760px; }
+    .skills-list { display: flex; flex-direction: column; gap: 1.25rem; max-width: 760px; }
+
+    .skill-row { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .skill-cat {
+      color: #fcb034;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
     .tag {
-      background: rgba(251,176,52,0.1);
-      border: 1px solid rgba(251,176,52,0.3);
-      color: #fcb034;
+      background: rgba(77,208,225,0.08);
+      border: 1px solid rgba(77,208,225,0.3);
+      color: #4dd0e1;
       padding: 0.3em 0.8em;
       border-radius: 3px;
       font-size: 0.9rem;
@@ -171,7 +183,8 @@
         btn-label="LINKEDIN"
         btn-href="https://www.linkedin.com/in/ricardo-zitelli"
         btn-color="#fcb034"
-        btn-text-color="#051B23">
+        btn-text-color="#051B23"
+        fireworks>
       </progress-bar>
       <div class="lang-switcher">
         <button class="lang-btn active" data-lang="pt">PT</button>
@@ -192,25 +205,44 @@
     <!-- 1 · Tecnologias -->
     <section data-section="1" id="tecnologias">
       <span class="section-title" data-i18n="tec.label">Stack</span>
-      <h2 data-i18n="tec.title">Tecnologias</h2>
-      <div class="tags">
-        <span class="tag">.NET</span><span class="tag">C#</span>
-        <span class="tag">ASP.NET Core</span><span class="tag">VB.NET</span>
-        <span class="tag">SQL Server</span><span class="tag">MySQL</span>
-        <span class="tag">Oracle</span><span class="tag">T-SQL</span>
-        <span class="tag">Procedures</span><span class="tag">Cursores</span>
-        <span class="tag">Views</span><span class="tag">Entity Framework</span>
-        <span class="tag">LINQ</span><span class="tag">DDD</span>
-        <span class="tag">SOLID</span><span class="tag">POO</span>
-        <span class="tag">MVC</span><span class="tag">Web Forms</span>
-        <span class="tag">WinForms</span><span class="tag">APIs REST</span>
-        <span class="tag">APIs SOAP</span><span class="tag">Azure DevOps</span>
-        <span class="tag">Docker</span><span class="tag">RabbitMQ</span>
-        <span class="tag">Redis</span><span class="tag">GIT</span>
-        <span class="tag">JIRA</span><span class="tag">Swagger</span>
-        <span class="tag">SCRUM</span><span class="tag">Kanban</span>
-        <span class="tag">HTML</span><span class="tag">CSS</span>
-        <span class="tag">JavaScript</span><span class="tag">jQuery</span>
+      <h2 data-i18n="tec.title">Habilidades Técnicas</h2>
+      <div class="skills-list">
+        <div class="skill-row">
+          <span class="skill-cat" data-i18n="tec.cat1">Linguagens</span>
+          <div class="skill-tags">
+            <span class="tag">C#</span><span class="tag">VB.NET</span><span class="tag">T-SQL</span><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat" data-i18n="tec.cat2">Frameworks e Plataformas</span>
+          <div class="skill-tags">
+            <span class="tag">.NET</span><span class="tag">ASP.NET Core</span><span class="tag">MVC</span><span class="tag">Web Forms</span><span class="tag">WinForms</span><span class="tag">Razor</span><span class="tag">LINQ</span><span class="tag">Entity Framework</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat" data-i18n="tec.cat3">Bancos de Dados</span>
+          <div class="skill-tags">
+            <span class="tag">SQL Server</span><span class="tag">MySQL</span><span class="tag">Oracle</span><span class="tag">Procedures</span><span class="tag">Cursores</span><span class="tag">Views</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat" data-i18n="tec.cat4">Integração e APIs</span>
+          <div class="skill-tags">
+            <span class="tag">REST API</span><span class="tag">SOAP</span><span class="tag">Swagger</span><span class="tag">RabbitMQ</span><span class="tag">Redis</span><span class="tag">Azure Functions</span><span class="tag">Docker</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat" data-i18n="tec.cat5">DevOps e Ferramentas</span>
+          <div class="skill-tags">
+            <span class="tag">Azure DevOps</span><span class="tag">GIT</span><span class="tag">JIRA</span><span class="tag">Office</span><span class="tag">Kubernetes</span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-cat" data-i18n="tec.cat6">Metodologias</span>
+          <div class="skill-tags">
+            <span class="tag">SCRUM</span><span class="tag">Kanban</span><span class="tag">SOLID</span><span class="tag">DDD</span><span class="tag">POO</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -222,22 +254,12 @@
       <div class="job">
         <div class="job-company">iBlue Consulting</div>
         <div class="job-role" data-i18n="iblue.role">Desenvolvedor Sênior Back-End .NET · Consultoria – Seguros</div>
-        <div class="job-period" data-i18n="iblue.period">DEZ 2023 – PRESENTE</div>
+        <div class="job-period" data-i18n="iblue.period">NOV 2023 – PRESENTE</div>
         <ul>
           <li data-i18n="iblue.b1">Atuou como profissional terceirizado para a MAG Seguros e SICOOB, garantindo manutenção de software de alta qualidade como desenvolvedor fullstack .NET.</li>
           <li data-i18n="iblue.b2">Identificou e resolveu bugs e incidentes em APIs REST e SOAP, WebForms e páginas Razor.</li>
           <li data-i18n="iblue.b3">Desenvolveu features para equalização de código em diferentes sistemas utilizando Azure Functions.</li>
           <li data-i18n="iblue.b4">Colaborou com equipe ágil usando metodologias SCRUM e KANBAN.</li>
-        </ul>
-      </div>
-
-      <div class="job">
-        <div class="job-company">GLHomes</div>
-        <div class="job-role" data-i18n="glhomes.role">Desenvolvedor Sênior .NET · Consultoria – Imobiliária</div>
-        <div class="job-period" data-i18n="glhomes.period">NOV 2023</div>
-        <ul>
-          <li data-i18n="glhomes.b1">Desenvolveu o módulo de recibos de vendas para a empresa.</li>
-          <li data-i18n="glhomes.b2">Trabalhou em equipe diversificada, comunicando-se em inglês.</li>
         </ul>
       </div>
 
@@ -351,19 +373,21 @@
         'resumo.title': 'Resumo Profissional',
         'resumo.text': 'Profissional com bacharelado em Sistemas de Informação e dez anos de experiência em desenvolvimento backend utilizando C#, SQL Server e VB.NET. Inglês (nível C1) com MBA em Business Intelligence e pós-graduando em Arquitetura de Sistemas .NET. Experiência no desenvolvimento de sistemas de informação para os setores de educação, telecomunicações e bancário. Prestando serviços de consultoria desde 2021.',
         'tec.label': 'Stack',
-        'tec.title': 'Tecnologias',
+        'tec.title': 'Habilidades Técnicas',
+        'tec.cat1': 'Linguagens',
+        'tec.cat2': 'Frameworks e Plataformas',
+        'tec.cat3': 'Bancos de Dados',
+        'tec.cat4': 'Integração e APIs',
+        'tec.cat5': 'DevOps e Ferramentas',
+        'tec.cat6': 'Metodologias',
         'exp.label': 'Carreira',
         'exp.title': 'Experiência Profissional',
         'iblue.role': 'Desenvolvedor Sênior Back-End .NET · Consultoria – Seguros',
-        'iblue.period': 'DEZ 2023 – PRESENTE',
+        'iblue.period': 'NOV 2023 – PRESENTE',
         'iblue.b1': 'Atuou como profissional terceirizado para a MAG Seguros e SICOOB, garantindo manutenção de software de alta qualidade como desenvolvedor fullstack .NET.',
         'iblue.b2': 'Identificou e resolveu bugs e incidentes em APIs REST e SOAP, WebForms e páginas Razor.',
         'iblue.b3': 'Desenvolveu features para equalização de código em diferentes sistemas utilizando Azure Functions.',
         'iblue.b4': 'Colaborou com equipe ágil usando metodologias SCRUM e KANBAN.',
-        'glhomes.role': 'Desenvolvedor Sênior .NET · Consultoria – Imobiliária',
-        'glhomes.period': 'NOV 2023',
-        'glhomes.b1': 'Desenvolveu o módulo de recibos de vendas para a empresa.',
-        'glhomes.b2': 'Trabalhou em equipe diversificada, comunicando-se em inglês.',
         'act.role': 'Desenvolvedor Sênior Back-End .NET · Consultoria – Banco',
         'act.period': 'SET 2022 – OUT 2023',
         'act.b1': 'Construiu sistema de análise de crédito automático para o Banco BMG, reduzindo o tempo de análise de 24 horas para 5 minutos e economizando mais de R$ 1.000.000 por ano.',
@@ -408,19 +432,21 @@
         'resumo.title': 'Professional Summary',
         'resumo.text': "Professional with a Bachelor's degree in Information Systems and ten years of experience in backend development using C#, SQL Server, and VB.NET. C1-level English with an MBA in Business Intelligence and currently pursuing a postgraduate degree in .NET Systems Architecture. Experience developing information systems for the education, telecommunications, and banking sectors. Providing consulting services since 2021.",
         'tec.label': 'Stack',
-        'tec.title': 'Technologies',
+        'tec.title': 'Technical Skills',
+        'tec.cat1': 'Languages',
+        'tec.cat2': 'Frameworks & Platforms',
+        'tec.cat3': 'Databases',
+        'tec.cat4': 'Integration & APIs',
+        'tec.cat5': 'DevOps & Tools',
+        'tec.cat6': 'Methodologies',
         'exp.label': 'Career',
         'exp.title': 'Professional Experience',
         'iblue.role': 'Senior Back-End .NET Developer · Consulting – Insurance',
-        'iblue.period': 'DEC 2023 – PRESENT',
+        'iblue.period': 'NOV 2023 – PRESENT',
         'iblue.b1': 'Worked as a contracted professional for MAG Seguros and SICOOB, ensuring high-quality software maintenance as a fullstack .NET developer.',
         'iblue.b2': 'Identified and resolved bugs and incidents in REST and SOAP APIs, WebForms, and Razor pages.',
         'iblue.b3': 'Developed features for code equalization across different systems using Azure Functions.',
         'iblue.b4': 'Collaborated with an agile team using SCRUM and KANBAN methodologies.',
-        'glhomes.role': 'Senior .NET Developer · Consulting – Real Estate',
-        'glhomes.period': 'NOV 2023',
-        'glhomes.b1': 'Developed the sales receipts module for the company.',
-        'glhomes.b2': 'Worked in a diverse team, communicating in English.',
         'act.role': 'Senior Back-End .NET Developer · Consulting – Banking',
         'act.period': 'SEP 2022 – OCT 2023',
         'act.b1': 'Built an automated credit analysis system for Banco BMG, reducing analysis time from 24 hours to 5 minutes and saving more than R$ 1,000,000 per year.',
@@ -482,12 +508,14 @@
 
     /* ── Scroll proporcional ── */
     function getScrollState() {
+      const headerH = document.querySelector('.sticky-bar')?.offsetHeight ?? 0;
+      const scrollTop = window.scrollY + headerH;
       let sectionIndex = 0;
       let ratio = 0;
       sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop) {
+        if (scrollTop >= s.offsetTop) {
           sectionIndex = parseInt(s.dataset.section);
-          ratio = Math.min(1, Math.max(0, (window.scrollY - s.offsetTop) / s.offsetHeight));
+          ratio = Math.min(1, Math.max(0, (scrollTop - s.offsetTop) / s.offsetHeight));
         }
       });
       return { sectionIndex, ratio };
@@ -500,6 +528,14 @@
 
     const { sectionIndex, ratio } = getScrollState();
     bar.setProgress(sectionIndex, ratio);
+
+    bar.addEventListener('step-click', (e) => {
+      const section = document.querySelector(`[data-section="${e.detail.index}"]`);
+      if (!section) return;
+      const headerH = document.querySelector('.sticky-bar')?.offsetHeight ?? 0;
+      const top = section.getBoundingClientRect().top + window.scrollY - headerH;
+      window.scrollTo({ top, behavior: 'smooth' });
+    });
   </script>
 
 </body>

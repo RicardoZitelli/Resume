@@ -93,6 +93,10 @@ class ProgressBar extends HTMLElement {
           z-index: 1;
         }
 
+        .icon-wrapper {
+          cursor: pointer;
+        }
+
         .icon-checkmark {
           position: absolute;
           top: -0.55em;
@@ -246,6 +250,72 @@ class ProgressBar extends HTMLElement {
     let current     = 0;
     let pending     = null; // { timeout, fillEl, nextIdx }
 
+    steps.forEach((step, i) => {
+      step.querySelector('.icon-wrapper').addEventListener('click', () => {
+        this.dispatchEvent(new CustomEvent('step-click', { bubbles: true, composed: true, detail: { index: i } }));
+      });
+    });
+
+    // ── Fireworks ──
+    const showFireworks = this.hasAttribute('fireworks');
+    let fwCanvas, fwCtx;
+    if (showFireworks) {
+      fwCanvas = document.createElement('canvas');
+      fwCanvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:999999;';
+      document.body.appendChild(fwCanvas);
+      fwCtx = fwCanvas.getContext('2d');
+      const resize = () => { fwCanvas.width = window.innerWidth; fwCanvas.height = window.innerHeight; };
+      resize();
+      window.addEventListener('resize', resize);
+    }
+
+    const fireParticles = (x, y) => {
+      if (!fwCtx) return;
+      const colors = [colorFilled, colorFilled, colorFilled, '#ffffff', 'rgba(255,255,255,0.6)'];
+      const particles = Array.from({ length: 60 }, () => {
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 0.8 + 0.3;
+        return {
+          x, y, px: x, py: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          len: Math.random() * 6 + 4,
+          color: colors[Math.floor(Math.random() * colors.length)],
+          alpha: 1,
+          friction: 0.97,
+        };
+      });
+      const animate = () => {
+        fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
+        let alive = false;
+        particles.forEach(p => {
+          p.px = p.x; p.py = p.y;
+          p.vx *= p.friction; p.vy *= p.friction;
+          p.x += p.vx; p.y += p.vy;
+          p.alpha -= 0.006;
+          if (p.alpha > 0) {
+            alive = true;
+            fwCtx.globalAlpha = p.alpha;
+            fwCtx.strokeStyle = p.color;
+            fwCtx.lineWidth = 2.5;
+            fwCtx.lineCap = 'round';
+            fwCtx.beginPath();
+            fwCtx.moveTo(p.px, p.py);
+            fwCtx.lineTo(p.x, p.y);
+            fwCtx.stroke();
+            fwCtx.fillStyle = p.color;
+            fwCtx.beginPath();
+            fwCtx.arc(p.x, p.y, 1.5, 0, Math.PI * 2);
+            fwCtx.fill();
+          }
+        });
+        fwCtx.globalAlpha = 1;
+        if (alive) requestAnimationFrame(animate);
+        else fwCtx.clearRect(0, 0, fwCanvas.width, fwCanvas.height);
+      };
+      animate();
+    };
+
     // anima a linha do step via JS (sem depender de classe CSS)
     const animateFill = (fill, instant) => {
       fill.style.transition = 'none';
@@ -263,6 +333,13 @@ class ProgressBar extends HTMLElement {
     const fillCircle = (step, instant) => {
       if (instant) step.classList.add('instant');
       step.classList.add('circle-done');
+      if (showFireworks && !instant) {
+        const checkmark = step.querySelector('.icon-checkmark');
+        setTimeout(() => {
+          const sr = checkmark.getBoundingClientRect();
+          fireParticles(sr.left + sr.width / 2, sr.top + sr.height / 2);
+        }, 500);
+      }
     };
 
     const reset = () => {
@@ -332,8 +409,7 @@ class ProgressBar extends HTMLElement {
         const wasFilled  = step.classList.contains('circle-done');
 
         if (shouldFill && !wasFilled) {
-          step.classList.remove('instant');
-          step.classList.add('circle-done');
+          fillCircle(step, false);
         } else if (!shouldFill && wasFilled) {
           step.classList.remove('circle-done', 'instant');
         }
