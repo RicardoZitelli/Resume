@@ -108,6 +108,7 @@ class ProgressBar extends HTMLElement {
           align-items: center;
           justify-content: center;
           transition: border-color 0.25s linear;
+          z-index: 1;
         }
 
         .icon-checkmark::before {
@@ -140,6 +141,7 @@ class ProgressBar extends HTMLElement {
 
         .step.circle-done .icon-checkmark .path1 {
           animation: dash 5s linear forwards;
+          animation-delay: 0.5s;
           stroke: var(--color-checkmark);
         }
 
@@ -151,6 +153,12 @@ class ProgressBar extends HTMLElement {
           color: #aaa;
           margin-top: 0;
           opacity: 0;
+          white-space: nowrap;
+        }
+
+        .step:last-child .step-text {
+          margin-left: 0;
+          transform: translateX(-50%);
         }
 
         .step.circle-done .step-text {
@@ -312,7 +320,8 @@ class ProgressBar extends HTMLElement {
         const wasFilled  = step.classList.contains('circle-done');
 
         if (shouldFill && !wasFilled) {
-          step.classList.add('instant', 'circle-done');
+          step.classList.remove('instant');
+          step.classList.add('circle-done');
         } else if (!shouldFill && wasFilled) {
           step.classList.remove('circle-done', 'instant');
         }
