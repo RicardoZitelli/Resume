@@ -20,6 +20,7 @@ class ProgressBar extends HTMLElement {
     const btnColor       = this.getAttribute('btn-color')       || '#fcb034';
     const btnTextColor   = this.getAttribute('btn-text-color')  || '#051B23';
     const btnHref        = this.getAttribute('btn-href')        || null;
+    const hideCheckmark  = this.hasAttribute('hide-checkmark');
 
     const ANIM_MS = 1000;
     const FAST_MS = 0;
@@ -212,6 +213,8 @@ class ProgressBar extends HTMLElement {
         }
 
         .btn-next:hover { filter: brightness(0.88); }
+
+        ${hideCheckmark ? '.icon-checkmark .path1 { display: none; }' : ''}
 
         @keyframes dash {
           to { stroke-dashoffset: 0; }
